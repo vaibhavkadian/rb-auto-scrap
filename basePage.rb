@@ -3,10 +3,10 @@ require 'mechanize'
 require 'logger'
 require 'envyable'
 
-Envyable.load('./config/env.yml', 'development')
+Envyable.load('./config/env.yml', 'basePage')
 puts ENV['uri']
 
-agent = Mechanize.new { |a| a.log = Logger.new("mech.log") }
+agent = Mechanize.new { |a| a.log = Logger.new("basePage.log") }
 agent.user_agent_alias = 'Windows Mozilla'
 agent.add_auth(ENV['uri'], ENV['user'], ENV['password'])
 agent.get(ENV['uri']) do |page|
